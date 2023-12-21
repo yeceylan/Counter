@@ -38,21 +38,19 @@ const Counter = memo(function Counter({ initialCount }) {
     { value: initialCount, id: Math.random() * 1000 }
   ]);
 
-  const currentCounter = counterChanges.reduce(
-    (prevCounter, counterChanges) => prevCounter + counterChanges.value,
+  const currentCounter = counterChange.reduce(
+    (prevCounter, counterChange) => prevCounter + counterChange.value,
     0
   );
 
   const handleDecrement = useCallback(function handleDecrement() {
     //setCounter((prevCounter) => prevCounter - 1);
-    setCounterChanges((prevCounterChanges) => [
-      { value: -1, id: Math.random() * 1000 },
-       ...prevCounterChanges]);
+    setCounterChanges((prevConterChanges) => [{ value: -1, id: Math.random() * 1000 }, ...prevCounterChanges]);
   }, [])
 
   const handleIncrement = useCallback(function handleIncrement() {
     //setCounter((prevCounter) => prevCounter + 1);
-    setCounterChanges((prevCounterChanges) => [{ value: 1, id: Math.random() * 1000 }, ...prevCounterChanges]);
+    setCounterChanges((prevConterChanges) => [{ value: 1, id: Math.random() * 1000 }, ...prevCounterChanges]);
   }, [])
 
   return (
